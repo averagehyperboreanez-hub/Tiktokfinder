@@ -72,3 +72,17 @@ if __name__ == "__main__":
     TOKEN = os.environ.get("DISCORD_TOKEN")
     bot.run(TOKEN)
 
+
+from flask import Flask
+import threading
+
+app = Flask("keep_alive")
+
+@app.route("/")
+def home():
+    return "Bot is running!"
+
+def run():
+    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 10000)))
+
+threading.Thread(target=run).start()
