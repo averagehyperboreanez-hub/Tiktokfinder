@@ -2,6 +2,9 @@ import os
 import json
 import requests
 import asyncio
+import sys
+import types
+sys.modules['audioop'] = types.ModuleType('audioop')
 import discord
 from discord.ext import tasks, commands
 
@@ -68,3 +71,4 @@ async def check_tiktok():
 if __name__ == "__main__":
     TOKEN = os.environ.get("DISCORD_TOKEN")
     bot.run(TOKEN)
+
